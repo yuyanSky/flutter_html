@@ -30,6 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 const htmlData = """
 <h1>Header 1</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="https://en.wikipedia.org/wiki/Lorem_ipsum">Ut enim ad minim veniam</a>, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
 <h2>Header 2</h2>
 <h3>Header 3</h3>
 <h4>Header 4</h4>
@@ -48,14 +49,14 @@ const htmlData = """
       <p>One of the most <span>common</span> equations in all of physics is <br /><var>E</var>=<var>m</var><var>c</var><sup>2</sup>.</p>
       <h3>Inline Styles:</h3>
       <p>The should be <span style='color: blue;'>BLUE style='color: blue;'</span></p>
-      <p>The should be <span style='color: red;'>RED style='color: red;'</span></p>
-      <p>The should be <span style='color: rgba(0, 0, 0, 0.10);'>BLACK with 10% alpha style='color: rgba(0, 0, 0, 0.10);</span></p>
-      <p>The should be <span style='color: rgb(0, 97, 0);'>GREEN style='color: rgb(0, 97, 0);</span></p>
-      <p>The should be <span style='background-color: red; color: rgb(0, 97, 0);'>GREEN style='color: rgb(0, 97, 0);</span></p>
-      <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.95);">blasdafjklasdlkjfkl</span></p>
-      <p style="text-align: right;"><span style="color: rgba(0, 0, 0, 0.95);">blasdafjklasdlkjfkl</span></p>
-      <p style="text-align: justify;"><span style="color: rgba(0, 0, 0, 0.95);">blasdafjklasdlkjfkl</span></p>
-      <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.95);">blasdafjklasdlkjfkl</span></p>
+      <p>The should be <span style='color: #f00;'>RED style='color: #f00;'</span></p>
+      <p>The should be <span style='color: rgba(0, 0, 0, 0.10);'>BLACK with 10% alpha style='color: rgba(0, 0, 0, 0.10)';</span></p>
+      <p>The should be <span style='color: rgb(0, 97, 0);'>GREEN style='color: rgb(0, 97, 0)';</span></p>
+      <p>The should be <span style='background-color: red; color: rgb(0, 97, 0);'>RED BACK style='background-color: red';</span></p>
+      <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.95);">center_align</span></p>
+      <p style="text-align: right;"><span style="color: rgba(0, 0, 0, 0.95);">right_align</span></p>
+      <p style="text-align: justify;"><span style="color: rgba(0, 0, 0, 0.95);">justify_align a larger text that_will span several_lines on a mobile screen</span></p>
+      <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.95);">center_align</span></p>
       <h3>Table support (with custom styling!):</h3>
       <p>
       <q>Famous quote...</q>
@@ -153,11 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
           style: {
             "html": Style(
               backgroundColor: Colors.black12,
-//              color: Colors.white,
             ),
-//            "h1": Style(
-//              textAlign: TextAlign.center,
-//            ),
             "table": Style(
               backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
             ),
