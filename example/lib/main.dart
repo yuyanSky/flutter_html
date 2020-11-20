@@ -74,6 +74,7 @@ const htmlData = """
       <h3>Custom Element Support:</h3>
       <flutter></flutter>
       <flutter horizontal></flutter>
+      <colourful>colourful inline spans</colourful>
       <h3>SVG support:</h3>
       <svg id='svg1' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
             <circle r="32" cx="35" cy="65" fill="#F00" opacity="0.5"/>
@@ -164,7 +165,17 @@ class _MyHomePageState extends State<MyHomePage> {
             "var": Style(fontFamily: 'serif'),
           },
           customRender: {
-            "flutter": (RenderContext context, Widget child, attributes, _) {
+            "colourful": (RenderContext context, _, __, element) {
+              return TextSpan(
+                text: element.text,
+                style: TextStyle(
+                  fontFamily: 'Monospace',
+                  backgroundColor: Colors.yellow,
+                  color: Colors.red,
+                ),
+              );
+            },
+            "flutter": (RenderContext context, _, attributes, __) {
               return FlutterLogo(
                 style: (attributes['horizontal'] != null)
                     ? FlutterLogoStyle.horizontal
