@@ -75,7 +75,7 @@ const htmlData = """
         <td rowspan='2'>Rowspan\nRowspan\nRowspan\nRowspan\nRowspan\nRowspan\nRowspan\nRowspan\nRowspan\nRowspan</td><td>Data</td><td>Data</td>
       </tr>
       <tr>
-        <td colspan="2">Colpsan\nColpsan\nColpsan</td>
+        <td colspan="2"><img alt='Google' src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png' /></td>
       </tr>
       </tbody>
       <tfoot>
@@ -121,7 +121,6 @@ const htmlData = """
         Linking to <a href='https://github.com'>websites</a> has never been easier.
       </p>
       <h3>Image support:</h3>
-      <!--
       <p>
         <img alt='Google' src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png' />
         <a href='https://google.com'><img alt='Google' src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png' /></a>
