@@ -150,18 +150,21 @@ class ImageContentElement extends ReplacedElement {
       );
       imageWidget = FutureBuilder<Size>(
         future: completer.future,
-        builder: (BuildContext buildContext, AsyncSnapshot<Size> snapshot) {
+        builder: (BuildContext _, AsyncSnapshot<Size> snapshot) {
           if (snapshot.hasData) {
-            return new Image.network(
-              src,
-              width: snapshot.data.width,
-              height: snapshot.data.height,
-              frameBuilder: (ctx, child, frame, _) {
-                if (frame == null) {
-                  return Text(alt ?? "", style: context.style.generateTextStyle());
-                }
-                return child;
-              },
+            return LayoutBuilder(
+              builder: (_, BoxConstraints constraints) {
+                return Image.network(
+                  src,
+                  width: min(snapshot.data.width, constraints.maxWidth),
+                  frameBuilder: (ctx, child, frame, _) {
+                    if (frame == null) {
+                      return Text(alt ?? "", style: context.style.generateTextStyle());
+                    }
+                    return child;
+                  },
+                );
+              }
             );
           } else if (snapshot.hasError) {
             return Text(alt ?? "", style: context.style.generateTextStyle());
