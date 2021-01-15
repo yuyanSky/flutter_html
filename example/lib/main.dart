@@ -30,7 +30,6 @@ class MyHomePage extends StatefulWidget {
 
 const htmlData = """
 <h1>Header 1</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="https://en.wikipedia.org/wiki/Lorem_ipsum">Ut enim ad minim veniam</a>, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
 <h2>Header 2</h2>
 <h3>Header 3</h3>
 <h4>Header 4</h4>
@@ -49,14 +48,14 @@ const htmlData = """
       <p>One of the most <span>common</span> equations in all of physics is <br /><var>E</var>=<var>m</var><var>c</var><sup>2</sup>.</p>
       <h3>Inline Styles:</h3>
       <p>The should be <span style='color: blue;'>BLUE style='color: blue;'</span></p>
-      <p>The should be <span style='color: #f00;'>RED style='color: #f00;'</span></p>
-      <p>The should be <span style='color: rgba(0, 0, 0, 0.10);'>BLACK with 10% alpha style='color: rgba(0, 0, 0, 0.10)';</span></p>
-      <p>The should be <span style='color: rgb(0, 97, 0);'>GREEN style='color: rgb(0, 97, 0)';</span></p>
-      <p>The should be <span style='background-color: red; color: rgb(0, 97, 0);'>RED BACK style='background-color: red';</span></p>
-      <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.95);">center_align</span></p>
-      <p style="text-align: right;"><span style="color: rgba(0, 0, 0, 0.95);">right_align</span></p>
-      <p style="text-align: justify;"><span style="color: rgba(0, 0, 0, 0.95);">justify_align a larger text that_will span several_lines on a mobile screen</span></p>
-      <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.95);">center_align</span></p>
+      <p>The should be <span style='color: red;'>RED style='color: red;'</span></p>
+      <p>The should be <span style='color: rgba(0, 0, 0, 0.10);'>BLACK with 10% alpha style='color: rgba(0, 0, 0, 0.10);</span></p>
+      <p>The should be <span style='color: rgb(0, 97, 0);'>GREEN style='color: rgb(0, 97, 0);</span></p>
+      <p>The should be <span style='background-color: red; color: rgb(0, 97, 0);'>GREEN style='color: rgb(0, 97, 0);</span></p>
+      <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.95);">blasdafjklasdlkjfkl</span></p>
+      <p style="text-align: right;"><span style="color: rgba(0, 0, 0, 0.95);">blasdafjklasdlkjfkl</span></p>
+      <p style="text-align: justify;"><span style="color: rgba(0, 0, 0, 0.95);">blasdafjklasdlkjfkl</span></p>
+      <p style="text-align: center;"><span style="color: rgba(0, 0, 0, 0.95);">blasdafjklasdlkjfkl</span></p>
       <h3>Table support (with custom styling!):</h3>
       <p>
       <q>Famous quote...</q>
@@ -82,10 +81,9 @@ const htmlData = """
       <tr><td>fData</td><td>fData</td><td>fData</td></tr>
       </tfoot>
       </table>
-      <h3>Custom Element Support:</h3>
+      <h3>Custom Element Support (inline: <bird></bird> and as block):</h3>
       <flutter></flutter>
       <flutter horizontal></flutter>
-      <colourful>colourful inline spans</colourful>
       <h3>SVG support:</h3>
       <svg id='svg1' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
             <circle r="32" cx="35" cy="65" fill="#F00" opacity="0.5"/>
@@ -124,7 +122,6 @@ const htmlData = """
       <p>
         <img alt='Google' src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png' />
         <a href='https://google.com'><img alt='Google' src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png' /></a>
-        <img alt='Alt Text of an intentionally broken image' src='https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30d' />
       </p>
       <h3>Video support:</h3>
       <video controls>
@@ -153,7 +150,11 @@ class _MyHomePageState extends State<MyHomePage> {
           style: {
             "html": Style(
               backgroundColor: Colors.black12,
+//              color: Colors.white,
             ),
+//            "h1": Style(
+//              textAlign: TextAlign.center,
+//            ),
             "table": Style(
               backgroundColor: Color.fromARGB(0x50, 0xee, 0xee, 0xee),
             ),
@@ -171,17 +172,10 @@ class _MyHomePageState extends State<MyHomePage> {
             "var": Style(fontFamily: 'serif'),
           },
           customRender: {
-            "colourful": (RenderContext context, _, __, element) {
-              return TextSpan(
-                text: element.text,
-                style: TextStyle(
-                  fontFamily: 'Monospace',
-                  backgroundColor: Colors.yellow,
-                  color: Colors.red,
-                ),
-              );
+            "bird": (RenderContext context, Widget child, attributes, _) {
+              return TextSpan(text: "🐦");
             },
-            "flutter": (RenderContext context, _, attributes, __) {
+            "flutter": (RenderContext context, Widget child, attributes, _) {
               return FlutterLogo(
                 style: (attributes['horizontal'] != null)
                     ? FlutterLogoStyle.horizontal

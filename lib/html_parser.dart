@@ -243,7 +243,7 @@ class HtmlParser extends StatelessWidget {
     );
 
     if (customRender?.containsKey(tree.name) ?? false) {
-      dynamic render = customRender[tree.name].call(
+      final render = customRender[tree.name].call(
         newContext,
         ContainerSpan(
           newContext: newContext,
@@ -257,19 +257,17 @@ class HtmlParser extends StatelessWidget {
         tree.attributes,
         tree.element,
       );
-
-      if (render != null) {
-        return render is InlineSpan
-            ? render
-            : WidgetSpan(
-                child: ContainerSpan(
-                  newContext: newContext,
-                  style: tree.style,
-                  shrinkWrap: context.parser.shrinkWrap,
-                  child: render,
-                ),
-              );
-      }
+      assert(render is InlineSpan || render is Widget);
+      return render is InlineSpan
+          ? render
+          : WidgetSpan(
+              child: ContainerSpan(
+                newContext: newContext,
+                style: tree.style,
+                shrinkWrap: context.parser.shrinkWrap,
+                child: render,
+              ),
+            );
     }
 
     //Return the correct InlineSpan based on the element type.
