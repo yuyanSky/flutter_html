@@ -257,17 +257,19 @@ class HtmlParser extends StatelessWidget {
         tree.attributes,
         tree.element,
       );
-      assert(render is InlineSpan || render is Widget);
-      return render is InlineSpan
-          ? render
-          : WidgetSpan(
-              child: ContainerSpan(
-                newContext: newContext,
-                style: tree.style,
-                shrinkWrap: context.parser.shrinkWrap,
-                child: render,
-              ),
-            );
+      if (render != null) {
+        assert(render is InlineSpan || render is Widget);
+        return render is InlineSpan
+            ? render
+            : WidgetSpan(
+                child: ContainerSpan(
+                  newContext: newContext,
+                  style: tree.style,
+                  shrinkWrap: context.parser.shrinkWrap,
+                  child: render,
+                ),
+              );
+      }
     }
 
     //Return the correct InlineSpan based on the element type.
