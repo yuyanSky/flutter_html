@@ -26,10 +26,7 @@ dependencies:
   webview_flutter: ^1.0.7
 
   # Plugins for rendering the <audio> tag.
-  chewie_audio:
-    git:
-      url: git://github.com/tneotia/chewie_audio-1.git
-      ref: "bd392910b65a9e1a3608afca2509c39bdf8f3fa7"
+  chewie_audio: ^1.2.0
 
   # Plugins for rendering the <svg> tag.
   flutter_svg: ^0.20.0-nullsafety.3
